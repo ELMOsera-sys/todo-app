@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+@import "tailwindcss";
+
+@theme static{
+  /* Font */
+  --font-josefin: "Josefin Sans", sans-serif;
+
+  /* Primary */
+  --color-blue-500: hsl(220, 98%, 61%);
+  --check-gradient: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+
+  /* Neutral - Shared (light + dark) */
+  --color-purple-300: hsl(234, 39%, 85%);
+  --color-gray-600: hsl(236, 9%, 61%);
+
+  /* Neutral - Light theme */
+  --color-gray-50: hsl(0, 0%, 98%);
+  --color-gray-300: hsl(233, 11%, 84%);
+  --color-navy-850: hsl(235, 19%, 35%);
+
+  /* Neutral - Dark theme */
+  --color-navy-950: hsl(235, 21%, 11%);
+  --color-navy-900: hsl(235, 24%, 19%);
+  --color-purple-100: hsl(236, 33%, 92%); /* hover */
+  --color-purple-600: hsl(235, 16%, 43%);
+  --color-purple-700: hsl(233, 14%, 35%);
+  --color-purple-800: hsl(237, 14%, 26%);
+}
+
+@theme inline{
+    --color-main: var(--main);
+    --color-todo-text: var(--todo-text);
+    --color-surface:var(--surface)
+}
+
+/* Theme dark (défaut) */
+:root,
+[data-theme="dark"]{
+        --main: var(--color-navy-950);
+        /* fond de page */
+        --surface: var(--color-navy-900);
+        /* cards, input, liste */
+        --todo-text: var(--color-purple-300);
+        /* texte principal */
+    }
+
+/* Theme light */
+[data-theme="light"] {
+    --main: var(--color-gray-300);
+    --surface: var(--color-gray-50);;
+    --todo-text: var(--color-navy-850);
+}

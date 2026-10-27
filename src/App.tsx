@@ -79,7 +79,7 @@ const handleDeleteCompleted = ():void => {
 
         <div className='flex md:w-[70%] md:mx-auto justify-between items-center pt-10 px-5'>
           <h1 className="text-white text-3xl font-bold tracking-widest">TODO</h1>
-          <button 
+          <button aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
           onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
           className={`${theme === "dark" ? 
             "  mask-[url(/images/icon-sun.svg)] " :" mask-[url(/images/icon-moon.svg)]"} 
@@ -107,9 +107,10 @@ const handleDeleteCompleted = ():void => {
             {
               filteredTodos.map(todo=>(
                 <div key={todo.id} className='flex justify-between items-center rounded-lg px-5 py-4 border-b '>
-              <input type="checkbox" onClick={handleChecked.bind(null,todo.id)}
+              <input type="checkbox" onChange={handleChecked(todo.id)}
                id={todo.id.toString()} checked={todo.completed}
               className="appearance-none size-5 shrink-0 cursor-pointer rounded-full  border-2 border-gray-600 
+                focus-visible:outline-2 focus-visible:outline-blue-500
                 not-checked:hover:border-transparent 
                 not-checked:hover:[background:linear-gradient(var(--surface),var(--surface))_padding-box,var(--check-gradient)_border-box]
                 checked:border-transparent
@@ -117,7 +118,7 @@ const handleDeleteCompleted = ():void => {
                checked:bg-no-repeat checked:bg-center checked:bg-origin-border "
                />
               <label htmlFor={todo.id.toString()} className={`${todo.completed ? "line-through text-gray-600 " : ""} mr-auto ml-4`}>{todo.text}</label>
-              <button onClick={handleDelete.bind(null,todo.id)}
+              <button onClick={handleDelete.bind(todo.id)} aria-label={`Delete ${todo.text}`}
               className="mask-[url(/images/icon-cross.svg)] mask-contain mask-no-repeat 
               mask-center size-3 bg-gray-600 cursor-pointer"></button>
             </div>
@@ -129,7 +130,7 @@ const handleDeleteCompleted = ():void => {
 
               <div className='bg-surface mx-auto mt-6 shadow-md shadow-surface
           flex justify-center gap-5 items-center rounded-lg px-5 py-4
-           text-gray-600 max-md:sr-only'>
+           text-gray-600 max-md:hidden'>
                 <button onClick={() => setFilter("all")} 
             className={`${filter === "all" ? " text-purple-400" : ""} cursor-pointer hover:font-bold`}>All</button>
                 <button onClick={() => setFilter("active")}
@@ -145,7 +146,7 @@ const handleDeleteCompleted = ():void => {
 
 
           <div className='bg-surface w-[80%] mx-auto mt-6 shadow-md shadow-surface
-          flex justify-center gap-5 items-center rounded-lg px-5 py-4 text-gray-600 md:sr-only'>
+          flex justify-center gap-5 items-center rounded-lg px-5 py-4 text-gray-600 md:hidden'>
             <button onClick={() => setFilter("all")} 
             className={`${filter === "all" ? " text-blue-500" : ""} cursor-pointer hover:font-bold`}>All</button>
             <button onClick={() => setFilter("active")}

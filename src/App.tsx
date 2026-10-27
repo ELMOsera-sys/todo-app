@@ -106,7 +106,7 @@ const handleDeleteCompleted = ():void => {
             
             {
               filteredTodos.map(todo=>(
-              <div key={todo.id} className='flex w-[100%] justify-between items-center rounded-lg px-5 py-4 border-b '>
+              <div key={todo.id} className='flex justify-between items-center rounded-lg px-5 py-4 border-b '>
               <input type="checkbox" onChange={handleChecked(todo.id)}
                id={todo.id.toString()} checked={todo.completed}
               className="appearance-none size-5 shrink-0 cursor-pointer rounded-full  border-2 border-gray-600 

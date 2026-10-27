@@ -107,7 +107,7 @@ const handleDeleteCompleted = ():void => {
             {
               filteredTodos.map(todo=>(
               <div key={todo.id} className='flex justify-between items-center rounded-lg px-5 py-4 border-b '>
-              <input type="checkbox" onChange={handleChecked(todo.id)}
+              <input type="checkbox" onChange={()=>handleChecked(todo.id)}
                id={todo.id.toString()} checked={todo.completed}
               className="appearance-none size-5 shrink-0 cursor-pointer rounded-full  border-2 border-gray-600 
                 focus-visible:outline-2 focus-visible:outline-blue-500
@@ -118,7 +118,7 @@ const handleDeleteCompleted = ():void => {
                checked:bg-no-repeat checked:bg-center checked:bg-origin-border "
                />
               <label htmlFor={todo.id.toString()} className={`${todo.completed ? "line-through text-gray-600 " : ""} mr-auto ml-4`}>{todo.text}</label>
-              <button onClick={handleDelete.bind(todo.id)} aria-label={`Delete ${todo.text}`}
+              <button onClick={()=>handleDelete(todo.id)} aria-label={`Delete ${todo.text}`}
               className="mask-[url(/images/icon-cross.svg)] mask-contain mask-no-repeat 
               mask-center size-3 bg-gray-600 cursor-pointer"></button>
             </div>
